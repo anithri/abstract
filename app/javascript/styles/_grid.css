@@ -1,0 +1,45 @@
+main {
+  padding: var(--spacing-extra-small, .25rem);
+
+  display: grid;
+  grid-gap: var(--spacing-small, .25rem);
+
+  grid-template-rows: 10rem 1fr 1fr 10rem;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas: "playerOne drafting playerTwo" "playerOne projects playerTwo" "playerFour projects playerThree" "playerFour messages playerThree";
+
+  & > div {
+    border-radius: var(--border-radius-3, .5rem);
+  }
+}
+
+.playerOne {
+  grid-area: playerOne;
+}
+
+.playerTwo {
+  grid-area: playerTwo;
+}
+
+.playerThree {
+  grid-area: playerThree;
+}
+
+.playerFour {
+  grid-area: playerFour;
+}
+
+.draftArea {
+  padding: var(--spacing-extra-small, .25rem);
+  grid-area: drafting;
+}
+
+.projects {
+  padding: var(--spacing-extra-small, .25rem);
+  grid-area: projects;
+}
+
+.messages {
+  padding: var(--spacing-extra-small, .25rem);
+  grid-area: messages;
+}
