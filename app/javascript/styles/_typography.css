@@ -1,0 +1,17 @@
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: var(--line-height-title, 1.25); /* .lh-title */
+  font-family: var(--serif, serif);
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  font-family: var(--sans-serif);
+}
+

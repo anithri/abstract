@@ -6,21 +6,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
+import styles from '../styles/site.css'
 
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
-
+import App from 'containers/App';
+console.log("into packs/site.js")
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
+    <App />,
+    document.getElementById("siteContainer")
   )
 })

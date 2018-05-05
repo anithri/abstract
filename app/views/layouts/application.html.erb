@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Abstract</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Abstract</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= yield(:stylesheets) if content_for?(:stylesheets) %>
+  <%= stylesheet_pack_tag 'site' %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <%= yield %>
+  <%= yield(:javascripts) if content_for?(:javascripts) %>
+</body>
 </html>
