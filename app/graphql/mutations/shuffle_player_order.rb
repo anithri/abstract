@@ -1,9 +1,10 @@
 Mutations::ShufflePlayerOrder = GraphQL::Relay::Mutation.define do
-  name "ShufflePlayerOrder"
-  argument :confirm, Types::ConfirmationType, required: true
+  name 'ShufflePlayerOrder'
+
   return_field :players, types[Types::PlayerType]
 
+  input_field :confirm, !types.Boolean
+
   resolve ->(obj, args, ctx) {
-    TurnOrder.shuffle if confirm
   }
 end

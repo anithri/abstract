@@ -47,7 +47,7 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :current_player, Types::PlayerType do
     description 'Get the current Player'
-    resolve ->(_obj, args, _ctx) { Player.current }
+    resolve ->(_obj, args, _ctx) { Game.first.current_player }
   end
 
   field :players, types[Types::PlayerType] do

@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(version: 2018_05_05_023153) do
 
   create_table "decks", force: :cascade do |t|
     t.bigint "game_id"
-    t.integer "card_id"
-    t.integer "order"
     t.integer "board_id"
+    t.integer "card_ids", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_decks_on_game_id"
@@ -28,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_05_05_023153) do
   create_table "games", force: :cascade do |t|
     t.integer "round", default: 0
     t.integer "phase", default: 0
+    t.integer "player_ids", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,22 +35,12 @@ ActiveRecord::Schema.define(version: 2018_05_05_023153) do
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.string "theme"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "turn_orders", force: :cascade do |t|
     t.bigint "game_id"
-    t.bigint "player_id"
-    t.integer "order"
-    t.boolean "current"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_turn_orders_on_game_id"
-    t.index ["player_id"], name: "index_turn_orders_on_player_id"
+    t.index ["game_id"], name: "index_players_on_game_id"
   end
 
   add_foreign_key "decks", "games"
-  add_foreign_key "turn_orders", "games"
-  add_foreign_key "turn_orders", "players"
+  add_foreign_key "players", "games"
 end

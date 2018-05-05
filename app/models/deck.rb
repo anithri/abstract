@@ -3,11 +3,10 @@
 # Table name: decks
 #
 #  id         :bigint(8)        not null, primary key
-#  order      :integer
+#  card_ids   :integer          default([]), is an Array
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  board_id   :integer
-#  card_id    :integer
 #  game_id    :bigint(8)
 #
 # Indexes

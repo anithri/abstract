@@ -7,21 +7,22 @@
 #  theme      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  game_id    :bigint(8)
+#
+# Indexes
+#
+#  index_players_on_game_id  (game_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (game_id => games.id)
 #
 
 class Player < ApplicationRecord
-  has_one :turn_order
-
-  delegate :order, :current, to: :turn_order
-
-  default_scope ->{includes(:turn_order).order('turn_orders.order')}
-
-  def self.current
-    TurnOrder.includes(:player).where(current: true).first.player
-  end
+  belongs_to :game
 
   def board
-    Board.find_by(name: theme)
+    Board.find_by(name: theme, game: game)
   end
 
   def cards
