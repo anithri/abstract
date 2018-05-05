@@ -10,4 +10,7 @@
 #
 
 class Game < ApplicationRecord
+  has_many :decks
+  has_many :turn_orders
+  has_many :players, through: :turn_orders
 end

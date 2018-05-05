@@ -21,6 +21,10 @@
 
 class Deck < ApplicationRecord
   belongs_to :game
-  belongs_to_active_hash :card
   belongs_to_active_hash :board
+  default_scope ->{order(order: :asc)}
+
+  def cards
+    card_ids.map{|c_id| Card.find(c_id)}
+  end
 end

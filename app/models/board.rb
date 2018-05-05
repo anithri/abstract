@@ -7,6 +7,7 @@ class Board < ActiveHash::Base
     { id: 14, name: 'playerFour' },
     { id: 20, name: 'Draw' },
     { id: 21, name: 'Discard' },
+    { id: 22, name: 'Common'},
     { :id => 101, :name => 'active1' },
     { :id => 102, :name => 'active2' },
     { :id => 103, :name => 'active3' },
@@ -25,4 +26,7 @@ class Board < ActiveHash::Base
     { :id => 116, :name => 'active16' }
   ]
 
+  def cards
+    Deck.where(board_id: id).order(:card_id)
+  end
 end

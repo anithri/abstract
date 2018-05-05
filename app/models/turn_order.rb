@@ -24,4 +24,18 @@
 class TurnOrder < ApplicationRecord
   belongs_to :game
   belongs_to :player
+
+  def self.shuffle
+    players = TurnOrder.pluck(:player_id).shuffle
+    TurnOrder.destroy_all
+    game = Game.first
+    players.each_with_index.map do |player, idx|
+      TurnOrder.create(
+        game: game,
+        order: idx + 1,
+        player_id: player,
+        current: idx == 0
+      )
+    end
+  end
 end

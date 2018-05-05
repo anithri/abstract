@@ -10,4 +10,21 @@
 #
 
 class Player < ApplicationRecord
+  has_one :turn_order
+
+  delegate :order, :current, to: :turn_order
+
+  default_scope ->{includes(:turn_order).order('turn_orders.order')}
+
+  def self.current
+    TurnOrder.includes(:player).where(current: true).first.player
+  end
+
+  def board
+    Board.find_by(name: theme)
+  end
+
+  def cards
+    board.cards
+  end
 end
