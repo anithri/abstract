@@ -4,6 +4,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.integer :round, default: 0
       t.integer :phase, default: 0
       t.integer :player_ids, array: true, default: []
+      t.string :bar_side, default: 'top'
       t.timestamps
     end
   end

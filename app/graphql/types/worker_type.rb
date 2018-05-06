@@ -5,5 +5,5 @@ Types::WorkerType = GraphQL::ObjectType.define do
   field :id, !types.ID
   field :name, types.String
   field :theme, types.String
-
+  field :filled, types.Boolean
 end

@@ -6,4 +6,12 @@ class Worker < ActiveHash::Base
     { id: 13, name: 'workerGreen', theme: 'workerGreen' },
     { id: 14, name: 'workerPurple', theme: 'workerPurple' }
   ]
+
+  def score
+    Bag.where(bucket_id: [1002, 1003])
+      .pluck(:worker_ids)
+      .flatten
+      .select{|w_id| w_id == self.id}.length
+  end
+
 end

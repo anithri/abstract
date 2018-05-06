@@ -7,9 +7,9 @@ all     = names.zip(themes)
 workers = Worker.all.map(&:id).shuffle.combination(3).to_a
 players = all.each_with_index.map do |(name, theme), idx|
   Player.find_or_create_by(
-    name:  name,
-    theme: theme,
-    game:  game,
+    name:       name,
+    theme:      theme,
+    game:       game,
     worker_ids: workers[idx]
   )
 end
@@ -17,21 +17,36 @@ end
 game.update_attributes player_ids: players.map(&:id).shuffle
 
 draw_id = Board.find_by(name: 'Draw').id
+discard_id = Board.find_by(name: 'Discard').id
 
 cards = Card.all.to_a.shuffle.map(&:id)
 
-cards.each_with_index do |card, idx|
+boards = Board.projects
+
+boards.each_with_index do |board, idx|
   Deck.create(
     game:     game,
-    card_ids: cards,
-    board_id: draw_id
+    card_ids: [cards[idx]],
+    board_id: board.id
   )
 end
 
+Board.players.each{|board| Deck.create(game: game, board_id: board.id)}
+
+Deck.create(
+  game:     game,
+  card_ids: cards.last(cards.length - boards.length),
+  board_id: draw_id
+)
+Deck.create(
+  game:     game,
+  board_id: discard_id
+)
+
 Bucket.all.each do |bucket|
   Bag.create(
-       game: game,
-       bucket_id: bucket.id,
-       worker_ids: bucket.default_bag
+    game:       game,
+    bucket_id:  bucket.id,
+    worker_ids: bucket.default_bag
   )
 end

@@ -1,0 +1,10 @@
+.card {
+  & > header {
+    background-color: var(--black-10, rgba(0, 0, 0, .1)); /* .bg-black-10 */
+    & > h3 {
+      font-size: var(--font-size-4, 1.25rem); /* .f4 */
+      text-align: center; /* .tc */
+
+    }
+  }
+}

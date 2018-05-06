@@ -1,3 +1,36 @@
 .area {
+  display: grid;
+  grid-gap: var(--spacing-extra-small, .25rem);
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-color: var(--red, #ff4136); /* .b--red */
+  border-style: none; /* .bn */
 
+  & > * {
+    border-radius: var(--border-radius-3, .5rem);
+    background-color: var(--white-20, rgba(255, 255, 255, .2)); /* .bg-white-20 */
+    padding: var(--spacing-extra-small, .25rem); /* .pa1 */
+
+  }
 }
+
+.top {
+  border-top-style: solid; /* .bt */
+  border-width: var(--spacing-small)
+}
+
+.bottom {
+  border-bottom-style: solid; /* .bb */
+  border-width: var(--spacing-small)
+}
+
+.left {
+  border-left-style: solid; /* .bl */
+  border-width: var(--spacing-small)
+}
+
+.right {
+  border-right-style: solid; /* .br */
+  border-width: var(--spacing-small)
+}
+

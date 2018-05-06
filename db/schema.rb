@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_014918) do
     t.integer "round", default: 0
     t.integer "phase", default: 0
     t.integer "player_ids", default: [], array: true
+    t.string "bar_side", default: "top"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -31,7 +31,7 @@ class Player < ApplicationRecord
   end
 
   def score
-    0
+    workers.map(&:score).sum
   end
 
   def workers

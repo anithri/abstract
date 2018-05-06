@@ -21,7 +21,10 @@
 class Deck < ApplicationRecord
   belongs_to :game
   belongs_to_active_hash :board
-  default_scope ->{order(order: :asc)}
+  default_scope ->{order(board_id: :asc)}
+
+  scope :projects, ->{where('board_id > 100')}
+  scope :players, ->{where('board_id < 20')}
 
   def cards
     card_ids.map{|c_id| Card.find(c_id)}

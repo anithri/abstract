@@ -34,12 +34,12 @@ main {
   grid-area: drafting;
 }
 
-.projects {
+.projectsArea {
   padding: var(--spacing-extra-small, .25rem);
   grid-area: projects;
 }
 
-.messages {
+.messagesArea {
   padding: var(--spacing-extra-small, .25rem);
   grid-area: messages;
 }

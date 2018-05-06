@@ -3,6 +3,7 @@
 # Table name: games
 #
 #  id         :bigint(8)        not null, primary key
+#  bar_side   :string           default("top")
 #  phase      :integer          default(0)
 #  player_ids :integer          default([]), is an Array
 #  round      :integer          default(0)
