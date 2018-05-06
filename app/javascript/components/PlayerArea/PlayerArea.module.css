@@ -1,0 +1,30 @@
+.playerArea {
+  height: 100%;
+  width: 100%;
+  & > header {
+    padding: var(--spacing-extra-small, .25rem);
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: var(--spacing-extra-small, .25rem);
+
+    background-color: var(--black-20, rgba(0, 0, 0, .2));
+
+    & > h3 {
+      width: 100%;
+      margin-top: var(--spacing-none);
+      margin-bottom: var(--spacing-none);
+      text-align: center;
+    }
+    & > h3:first-child {
+      grid-column: 1 / span 3;
+    }
+    & > ul {
+      grid-column: 2 / span 2;
+    }
+  }
+  & > section {
+    padding: var(--spacing-extra-small, .25rem);
+  }
+}

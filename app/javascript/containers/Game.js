@@ -2,7 +2,7 @@ import React from 'react';
 import {gql} from 'apollo-boost';
 import {Query} from 'react-apollo';
 import Player from './Player';
-import DraftArea from './DraftArea';
+import Draft from './Draft';
 import Projects from './Projects';
 import Messages from './Messages';
 
@@ -22,9 +22,9 @@ const GameTable = ({players}) => {
       <Player playerId={2} className='playerTwo'/>
       <Player playerId={3} className='playerThree'/>
       <Player playerId={4} className='playerFour'/>
-      <DraftArea/>
-      <Projects/>
-      <Messages/>
+      <Draft className="draftArea"/>
+      <Projects className="projectsArea"/>
+      <Messages className="messagesArea"/>
     </main>
   );
 };

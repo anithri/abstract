@@ -1,0 +1,20 @@
+.workerList {
+  height: 100%;
+  width: 100%;
+  margin: var(--spacing-none, 0);
+  padding: var(--spacing-extra-small, .25rem);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  & > li {
+    border-radius: var(--border-radius-3, .5rem);
+    padding: var(--spacing-extra-extra-small, .25rem);
+    list-style: none;
+    margin-top: var(--spacing-none, 0);
+    flex: 0 0 auto;
+    font-size: var(--font-size-5, .8rem);
+
+  }
+}

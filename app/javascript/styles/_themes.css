@@ -1,0 +1,55 @@
+main {
+//background-color: var(--dark-gray, #eee); background-color: var(--purple, #5e2ca5);
+  background-image: url(../images/cubes.png);
+  & > * {
+    border: thin solid var(--moon-gray);
+  }
+}
+
+.playerOne {
+  background-color: var(--playerOne-bg);
+}
+
+.playerTwo {
+  background-color: var(--playerTwo-bg);
+}
+
+.playerThree {
+  background-color: var(--playerThree-bg);
+}
+
+.playerFour {
+  background-color: var(--playerFour-bg);
+}
+
+.draftingArea {
+  background-color: var(--drafting-bg);
+}
+
+.projectsArea {
+  background-color: var(--projects-bg);
+}
+
+.messagesArea {
+  background-color: var(--messages-bg);
+}
+
+.workerPurple {
+  background-color: var(--purple, #5e2ca5);
+  color: var(--near-white, #f4f4f4);
+}
+
+.workerGreen {
+  background-color: var(--dark-green, #137752);
+  color: var(--near-white, #f4f4f4);
+}
+
+.workerBlue {
+  background-color: var(--dark-blue, #00449e);
+  color: var(--near-white, #f4f4f4);
+}
+
+.workerRed {
+  background-color: var(--dark-red, #e7040f);
+  color: var(--near-white, #f4f4f4);
+}

@@ -1,0 +1,53 @@
+.area {
+  background-color: var(--white-20, rgba(255, 255, 255, .2)); /* .bg-white-20 */
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-gap: var(--spacing-small, .25rem);
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
+
+  grid-template-areas: "bar details reserve" "draw details projects" "discard details dead"
+}
+
+.region {
+  margin: var(--spacing-none, 0);
+  padding: var(--spacing-extra-small, .25rem);
+  background-color: var(--white-20, rgba(255, 255, 255, .2)); /* .bg-white-20 */
+}
+
+.bar {
+  composes: region;
+  grid-area: bar;
+}
+
+.dead {
+  composes: region;
+  grid-area: dead;
+}
+
+.discard {
+  composes: region;
+  grid-area: discard;
+}
+
+.draw {
+  composes: region;
+  grid-area: draw;
+}
+
+.reserve {
+  composes: region;
+  grid-area: reserve;
+}
+
+.projects {
+  composes: region;
+  grid-area: projects;
+}
+
+.details {
+  composes: region;
+  grid-area: details;
+}

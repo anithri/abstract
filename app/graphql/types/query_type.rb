@@ -66,4 +66,36 @@ Types::QueryType = GraphQL::ObjectType.define do
     resolve ->(_obj, args, _ctx) { Worker.all }
   end
 
+  field :bag, Types::BagType do
+    description 'Find an Bag by id'
+    argument :id, !types.ID
+    resolve ->(_obj, args, _ctx) { Bag.find(args['id']) }
+  end
+
+  field :bag_by_name, Types::BagType do
+    description 'Find an Bag by name'
+    argument :name, !types.String
+    resolve ->(_obj, args, _ctx) { Bag.by_name(args['name']) }
+  end
+
+  field :bags, types[Types::BagType] do
+    description 'Retrieve a list of Non-Card Bags'
+    resolve ->(_obj, args, _ctx) {Bag.board}
+  end
+
+  field :card_bags, types[Types::BagType] do
+    description 'Retrieve all Card Bags'
+    resolve ->(_obj, args, _ctx) {Bag.cards}
+  end
+
+  field :bag_counts, Types::BagCountType do
+    description 'Retrieve counts for each bag'
+    resolve ->(_obj, args, _ctx){BagCount.all}
+  end
+
+  field :card_worker_count, types.Int do
+    description "count of workers assigned to projects"
+    resolve ->(_obj, args, _ctx) {Bag.card_workers.length}
+  end
+
 end

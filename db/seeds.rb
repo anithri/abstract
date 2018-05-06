@@ -4,11 +4,13 @@ game = Game.create
 names   = %w{Bruce Barbara Dick Selina}.shuffle
 themes  = %w{playerOne playerTwo playerThree playerFour}.shuffle
 all     = names.zip(themes)
-players = all.map do |(name, theme)|
+workers = Worker.all.map(&:id).shuffle.combination(3).to_a
+players = all.each_with_index.map do |(name, theme), idx|
   Player.find_or_create_by(
     name:  name,
     theme: theme,
     game:  game,
+    worker_ids: workers[idx]
   )
 end
 
@@ -23,5 +25,13 @@ cards.each_with_index do |card, idx|
     game:     game,
     card_ids: cards,
     board_id: draw_id
+  )
+end
+
+Bucket.all.each do |bucket|
+  Bag.create(
+       game: game,
+       bucket_id: bucket.id,
+       worker_ids: bucket.default_bag
   )
 end

@@ -5,6 +5,7 @@
 #  id         :bigint(8)        not null, primary key
 #  name       :string
 #  theme      :string
+#  worker_ids :integer          default([]), is an Array
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  game_id    :bigint(8)
@@ -27,5 +28,13 @@ class Player < ApplicationRecord
 
   def cards
     board.cards
+  end
+
+  def score
+    0
+  end
+
+  def workers
+    worker_ids.map{|w_id| Worker.find(w_id)}
   end
 end

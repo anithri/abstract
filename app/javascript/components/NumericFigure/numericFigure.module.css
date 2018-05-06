@@ -1,0 +1,11 @@
+.numericFigure {
+  text-align: center;
+  font-size: var(--font-size-5, 1rem);
+
+  & figcaption {
+    text-align: center;
+    color: var(--black-40, rgba(0, 0, 0, .4));
+    font-size: var(--font-size-6, .875rem);
+
+  }
+}

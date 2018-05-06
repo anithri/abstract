@@ -8,7 +8,7 @@ main {
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas: "playerOne drafting playerTwo" "playerOne projects playerTwo" "playerFour projects playerThree" "playerFour messages playerThree";
 
-  & > div {
+  & > * {
     border-radius: var(--border-radius-3, .5rem);
   }
 }

@@ -1,14 +1,21 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import PlayerArea from '../components/PlayerArea'
+import DraftingArea from 'components/DraftingArea'
 
-const PlayerContainer = ({playerId, className}) => {
-  const GET_PLAYER = gql`
+const Draft = ({className}) => {
+  const GET_DRAFTING = gql`
     query {
-      player(id: ${playerId}) {
-        name
-        score
+      bag_counts {
+        bar
+        draw
+        discard
+        reserve
+        projects
+        dead
+       }
+
+      bag_by_name(name: "bar") {
         workers {
           id
           name
@@ -16,10 +23,9 @@ const PlayerContainer = ({playerId, className}) => {
         }
       }
     }
-  `;
-
+  `
   return (
-    <Query query={GET_PLAYER} variables={{id: playerId}} pollInterval={0}>
+    <Query query={GET_DRAFTING} pollInterval={0}>
       {({ loading, error, data }) => {
         if (loading) return (
           <div className={`boxCenter ${className}`}>
@@ -27,16 +33,15 @@ const PlayerContainer = ({playerId, className}) => {
           </div>
         );
         if (error) return (
-
           <div className={`boxCenter ${className}`}>
             <span>error :(</span>
           </div>
         );
-        const player = data.player
-        return <PlayerArea {...player} className={className}/>;
+        const bags = data.bags
+        return <DraftingArea {...data} className={className}/>;
       }}
     </Query>
   )
 }
 
-export default PlayerContainer;
+export default Draft;
