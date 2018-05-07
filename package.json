@@ -1,5 +1,6 @@
 {
   "name": "abstract",
+  "description": "Experiment in Geme Design, react, rails, and graphQL",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
