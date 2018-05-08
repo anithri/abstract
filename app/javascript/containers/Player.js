@@ -1,15 +1,12 @@
-import React from 'react';
-import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
-import PlayerPane from '../panes/Player';
+import React from "react";
+import { gql } from "apollo-boost";
+import { Query } from "react-apollo";
+import PlayerPane from "../panes/Player";
 
-const PlayerContainer = ({playerId, className}) => {
-  const GET_PLAYER = gql`
-    query {
-      player(id: ${playerId}) {
+export const GET_PLAYER = gql`
+    query player($player_id: ID!) {
+      player(player_id: $player_id) {
         name
-        score
-        is_current
         workers {
           id
           name
@@ -19,8 +16,9 @@ const PlayerContainer = ({playerId, className}) => {
     }
   `;
 
+const PlayerContainer = ({ player_id, is_current, score, className }) => {
   return (
-    <Query query={GET_PLAYER} variables={{id: playerId}} pollInterval={0}>
+    <Query query={GET_PLAYER} variables={{ player_id }} pollInterval={0}>
       {({ loading, error, data }) => {
         if (loading) return (
           <div className={`boxCenter ${className}`}>
@@ -28,16 +26,15 @@ const PlayerContainer = ({playerId, className}) => {
           </div>
         );
         if (error) return (
-
           <div className={`boxCenter ${className}`}>
             <span>error :(</span>
           </div>
         );
         const player = data.player;
-        return <PlayerPane {...player} className={className}/>;
+        return <PlayerPane {...player} score={score} is_current={is_current} className={className}/>;
       }}
     </Query>
-  )
-}
+  );
+};
 
 export default PlayerContainer;

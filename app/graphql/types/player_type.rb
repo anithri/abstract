@@ -6,6 +6,7 @@ Types::PlayerType = GraphQL::ObjectType.define do
   field :name, types.String
   field :theme, types.String
   field :score, types.Int
+  field :is_current, types.Boolean
   field :board, Types::BoardType
   field :cards, types[Types::CardType]
   field :workers, types[Types::WorkerType]

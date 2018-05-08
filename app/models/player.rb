@@ -23,11 +23,15 @@ class Player < ApplicationRecord
   belongs_to :game
 
   def board
-    Board.find_by(name: theme, game: game)
+    Board.find_by(name: self.theme)
+  end
+
+  def deck
+    Deck.find_by(board_id: board.id, game: game)
   end
 
   def cards
-    board.cards
+    deck.cards
   end
 
   def score
@@ -36,5 +40,9 @@ class Player < ApplicationRecord
 
   def workers
     worker_ids.map{|w_id| Worker.find(w_id)}
+  end
+
+  def is_current
+    game.current_player == self
   end
 end

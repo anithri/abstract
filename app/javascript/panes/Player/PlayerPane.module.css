@@ -29,6 +29,6 @@
   }
 }
 
-.pane + .current {
+.current {
   border: thick solid var(--near-black);
 }

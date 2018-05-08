@@ -2,7 +2,7 @@ Game.destroy_all
 game = Game.create
 
 names   = %w{Bruce Barbara Dick Selina}.shuffle
-themes  = %w{playerOne playerTwo playerThree playerFour}.shuffle
+themes  = %w{playerOne playerTwo playerThree playerFour}
 all     = names.zip(themes)
 workers = Worker.all.map(&:id).shuffle.combination(3).to_a
 players = all.each_with_index.map do |(name, theme), idx|
@@ -14,7 +14,7 @@ players = all.each_with_index.map do |(name, theme), idx|
   )
 end
 
-game.update_attributes player_ids: players.map(&:id).shuffle
+game.update_attributes player_ids: players.map(&:id).rotate(rand(4))
 
 draw_id = Board.find_by(name: 'Draw').id
 discard_id = Board.find_by(name: 'Discard').id

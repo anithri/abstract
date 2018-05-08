@@ -46,8 +46,8 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :player, Types::PlayerType do
     description 'Find an Player by id'
-    argument :id, !types.ID
-    resolve ->(_obj, args, _ctx) { Player.find(args['id']) }
+    argument :player_id, !types.ID
+    resolve ->(_obj, args, _ctx) { Player.find(args['player_id']) }
   end
 
   field :current_player, Types::PlayerType do
@@ -57,7 +57,7 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :players, types[Types::PlayerType] do
     description 'Retrieve a list of Players'
-    resolve ->(_obj, args, _ctx) { Player.all }
+    resolve ->(_obj, args, _ctx) { Game.first.players }
   end
 
   field :worker, Types::WorkerType do

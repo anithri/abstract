@@ -43,7 +43,7 @@ group :development do
 
   gem 'guard-rails'
   gem 'guard-bundler'
-  gem 'libnotify', platform: :mri_24
+  gem 'libnotify'
   gem 'rb-fchange', require: false
   gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false

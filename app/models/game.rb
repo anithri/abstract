@@ -18,11 +18,6 @@ class Game < ApplicationRecord
     player_ids.map{|pid| Player.find(pid)}
   end
 
-  def shuffle_players
-    update_attributes(player_ids: player_ids.shuffle)
-    players
-  end
-
   def current_player
     Player.find(player_ids.first)
   end

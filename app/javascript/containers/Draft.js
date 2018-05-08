@@ -37,7 +37,6 @@ const Draft = ({className}) => {
             <span>error :(</span>
           </div>
         );
-        const bags = data.bags;
         return <DraftingPane {...data} className={className}/>;
       }}
     </Query>
