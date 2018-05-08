@@ -8,10 +8,6 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
 
 /node_modules
 /yarn-error.log
@@ -23,15 +19,14 @@
 /config/master.key
 /public/packs
 /public/packs-test
-/node_modules
 yarn-debug.log*
-.yarn-integrity
 ### Rails template
 *.rbc
 capybara-*.html
 .rspec
 /log
 /tmp
+!.keep
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
@@ -53,7 +48,6 @@ config/master.key
 .env
 
 ## Environment normalization:
-/.bundle
 /vendor/bundle
 
 # these should all be checked in to normalize the environment:
@@ -70,9 +64,6 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
-# Ignore Byebug command history file.
-.byebug_history
-
 # Ignore node_modules
 node_modules/
 
@@ -81,8 +72,6 @@ node_modules/
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Runtime data
 pids
@@ -112,7 +101,6 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -130,11 +118,7 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# Yarn Integrity file
-.yarn-integrity
 
-# dotenv environment variables file
-.env
 
 # next.js build output
 .next
