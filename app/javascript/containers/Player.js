@@ -1,7 +1,7 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import PlayerArea from '../components/PlayerArea'
+import PlayerPane from '../panes/Player';
 
 const PlayerContainer = ({playerId, className}) => {
   const GET_PLAYER = gql`
@@ -9,6 +9,7 @@ const PlayerContainer = ({playerId, className}) => {
       player(id: ${playerId}) {
         name
         score
+        is_current
         workers {
           id
           name
@@ -32,8 +33,8 @@ const PlayerContainer = ({playerId, className}) => {
             <span>error :(</span>
           </div>
         );
-        const player = data.player
-        return <PlayerArea {...player} className={className}/>;
+        const player = data.player;
+        return <PlayerPane {...player} className={className}/>;
       }}
     </Query>
   )

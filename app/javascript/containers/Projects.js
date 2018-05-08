@@ -1,7 +1,7 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import ProjectsArea from 'components/ProjectsArea';
+import ProjectsPane from 'panes/Projects';
 
 const Projects = ({className}) => {
   const GET_PROJECTS = gql`
@@ -37,7 +37,7 @@ const Projects = ({className}) => {
             <span>error :(</span>
           </div>
         );
-        return <ProjectsArea {...data} className={className}/>;
+        return <ProjectsPane {...data} className={className}/>;
       }}
     </Query>
   )

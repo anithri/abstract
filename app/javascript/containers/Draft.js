@@ -1,7 +1,7 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import DraftingArea from 'components/DraftingArea'
+import DraftingPane from 'panes/Drafting'
 
 const Draft = ({className}) => {
   const GET_DRAFTING = gql`
@@ -37,8 +37,8 @@ const Draft = ({className}) => {
             <span>error :(</span>
           </div>
         );
-        const bags = data.bags
-        return <DraftingArea {...data} className={className}/>;
+        const bags = data.bags;
+        return <DraftingPane {...data} className={className}/>;
       }}
     </Query>
   )

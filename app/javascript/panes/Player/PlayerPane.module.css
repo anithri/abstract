@@ -1,4 +1,4 @@
-.playerArea {
+.pane {
   height: 100%;
   width: 100%;
   & > header {
@@ -27,4 +27,8 @@
   & > section {
     padding: var(--spacing-extra-small, .25rem);
   }
+}
+
+.pane + .current {
+  border: thick solid var(--near-black);
 }

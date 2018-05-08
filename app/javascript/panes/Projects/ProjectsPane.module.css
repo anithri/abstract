@@ -1,4 +1,4 @@
-.area {
+.pane {
   display: grid;
   grid-gap: var(--spacing-extra-small, .25rem);
   grid-template-rows: 1fr 1fr 1fr 1fr;
